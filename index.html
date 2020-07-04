@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>shake demo</title>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <meta name = "viewport" content = "width = 320, initial-scale = 2.3, user-scalable = no">
+  <audio id="pop">
+    <source src="spank.wav" type="audio/mpeg">
+  </audio>
+
+  <style>
+    #cog {
+      position: absolute;
+      width: 100%;
+    }
+    #wrapper {
+      background: rgb(0,181,255);
+      background: radial-gradient(circle, rgba(0,181,255,1) 0%, rgba(2,254,255,1) 48%, rgba(0,212,255,1) 100%);
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #slap {
+      width: 80%;
+    }
+  </style>
+
+<script type="text/javascript">
+  var rotation = function (){
+     $("#cog").rotate({
+      angle:0, 
+      animateTo:360, 
+      callback: rotation,
+      easing: function (x,t,b,c,d){        // 
+          return c*(t/d)+b;
+      }
+     });
+  }
+  
+  </script>
+  
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+</head>
+<body>
+ 
+  <div id="wrapper" >
+    <img id="cog" src="cog.svg" />
+    <img id="slap" src="img/spankchain.png" />
+  </div>
+ 
+  <script>
+  $( document ).click(function() {
+    $( "#slap" ).effect( "shake" );
+    $('audio#pop')[0].play()
+  });
+
+  $(document).ready(function() {
+      rotation();
+  });
+  </script>
+ 
+</body>
+</html>
