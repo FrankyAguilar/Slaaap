@@ -13,6 +13,40 @@
     #cog {
       position: absolute;
       width: 100%;
+      -webkit-animation-name: "spin";
+      -webkit-animation-duration: 40000ms;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+      -moz-animation-name: spin;
+      -moz-animation-duration: 40000ms;
+      -moz-animation-iteration-count: infinite;
+      -moz-animation-timing-function: linear;
+      -ms-animation-name: spin;
+      -ms-animation-duration: 40000ms;
+      -ms-animation-iteration-count: infinite;
+      -ms-animation-timing-function: linear;
+      -o-transition: rotate(3600deg);
+
+    }
+    @-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+    }
+    @-moz-keyframes spin {
+        from { -moz-transform: rotate(0deg); }
+        to { -moz-transform: rotate(360deg); }
+    }
+    @-webkit-keyframes spin {
+        from { -webkit-transform: rotate(0deg); }
+        to { -webkit-transform: rotate(360deg); }
+    }
+    @keyframes spin {
+        from {
+            transform:rotate(0deg);
+        }
+        to {
+            transform:rotate(360deg);
+        }
     }
     #wrapper {
       background: rgb(0,181,255);
@@ -30,20 +64,6 @@
       width: 80%;
     }
   </style>
-
-<script type="text/javascript">
-  var rotation = function (){
-     $("#cog").rotate({
-      angle:0, 
-      animateTo:360, 
-      callback: rotation,
-      easing: function (x,t,b,c,d){        // 
-          return c*(t/d)+b;
-      }
-     });
-  }
-  
-  </script>
   
 <script src="js/jquery-1.10.2.js"></script>
 <script src="js/jquery-ui.js"></script>
@@ -57,14 +77,13 @@
   </div>
  
   <script>
-  $( document ).click(function() {
-    $( "#slap" ).effect( "shake" );
-    $('audio#pop')[0].play()
-  });
+    $( document ).click(function() {
+      $( "#slap" ).effect( "shake" );
+      $('audio#pop')[0].play()
+    });
 
-  $(document).ready(function() {
-      rotation();
-  });
+    $(document).ready(function() {
+    });
   </script>
  
 </body>
